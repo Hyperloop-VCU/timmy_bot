@@ -91,6 +91,10 @@
             <xacro:cylinder_inertia m="0.5" r="${wheel_radius}" h="${wheel_width}" />
         </link>
 
+        <gazebo reference="${prefix}_link">
+            <material>Gazebo/Black</material>
+        </gazebo>
+
         <joint name="${prefix}_joint" type="continuous">
             <parent link="base_link" />
             <child link="${prefix}_link" />
@@ -128,6 +132,13 @@
 
     </link>
 
+    <gazebo reference="front_r_caster">
+        <material>Gazebo/Black</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
+
     <joint name="caster_r_joint" type="fixed">
         <parent link="base_link" />
         <child link="front_r_caster" />
@@ -155,6 +166,14 @@
         <xacro:sphere_inertia m="0.5" r="${(wheel_radius+wheel_zoff-(base_height/2))}" />
 
     </link>
+
+    <gazebo reference="front_l_caster">
+        <material>Gazebo/Black</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
+
 
     <joint name="caster_l_joint" type="fixed">
         <parent link="base_link" />
